@@ -1,23 +1,24 @@
 package DataStructures;
 
 public class LinkedList {
-	private Object head;
-	private Object tail;
+	public INode head;
+	public INode tail;
 
 	public LinkedList()
 	{
 		this.head=null;
 		this.tail=null;
 	}
-	public void add(Object newNode)
+	public void add(INode newNode)
 	{
 		if(this.tail==null)
 			this.tail=newNode;
 		if(this.head==null)
 			this.head=newNode;
 		else {
-			INode tempNote=(INode) this.head;
+			INode tempNote=this.head;
 			this.head=newNode;
+			(this.head).setNext(tempNote);
 		}
 	}
 	public void printMyNode() {
@@ -27,15 +28,21 @@ public class LinkedList {
 		{
 			myNodes.append(tempNode.getKey());
 			if(!tempNode.equals(tail)) myNodes.append("->");
-			
+			tempNode=tempNode.getNext();
 		}
+		myNodes.append(tempNode.getKey());
+		System.out.println(myNodes);
 	}
 	public void append(INode newNode){
-        if(head == null){
-            head = newNode;
-            return;
+        if(this.head==null)
+        	head=newNode;
+        if(this.tail==null)
+        	tail=newNode;
+        else
+        {
+        	this.tail.setNext(newNode);
+        	this.tail=newNode;
         }
-        this.tail=newNode;
     }
 	public void insert(INode mynode, INode newnode)
 	{
