@@ -12,4 +12,16 @@ public class MyStack {
 		myLinkedList.add(newNode);
 	}
 
+	public void printStack() {
+		myLinkedList.printMyNode();
+	}
+
+	public INode peek() {
+		return myLinkedList.head;
+	}
+
+	public INode pop() {
+		return myLinkedList.pop();
+	}
+	
 }
