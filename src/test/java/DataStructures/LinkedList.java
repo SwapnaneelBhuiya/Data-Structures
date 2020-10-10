@@ -20,6 +20,7 @@ public class LinkedList<K> {
 			this.head=newNode;
 			(this.head).setNext(tempNote);
 		}
+		sort();
 	}
 	public void printMyNode() {
 		StringBuffer myNodes=new StringBuffer("My Nodes:");
@@ -97,6 +98,19 @@ public class LinkedList<K> {
 				popLast();
 				break;
 				}
+		}
+	}
+	public void sort()
+	{
+		INode temp=this.head;
+		while(temp.getNext()!=null)
+		{
+			if(((StringBuffer) temp.getKey()).compareTo((StringBuffer) temp.getNext().getKey()) >0)
+			{
+				INode med=temp;
+				temp=temp.getNext();
+				temp.setNext(med);
+			}
 		}
 	}
 }
