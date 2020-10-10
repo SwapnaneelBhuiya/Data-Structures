@@ -74,9 +74,9 @@ public class DataTest {
 	@Test
 	public void givenFirstElementWhenDeletdShouldPassLinkedListResult()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList myLinkedList=new LinkedList();
@@ -90,9 +90,9 @@ public class DataTest {
 	@Test
 	public void givenLastElementWhenDeletedShouldPassLinkedListResult()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList myLinkedList=new LinkedList();
@@ -106,9 +106,9 @@ public class DataTest {
 	@Test
 	public void abilityToSearchForNode30()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList myLinkedList=new LinkedList();
@@ -120,9 +120,9 @@ public class DataTest {
 	@Test
 	public void abilityToInsert40After30()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		Node<Integer> myfourthNode=new Node<>(40);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
@@ -136,9 +136,9 @@ public class DataTest {
 	@Test
 	public void abilityToDelete40After30()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		Node<Integer> myfourthNode=new Node<>(40);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
@@ -154,9 +154,9 @@ public class DataTest {
 	@Test
 	public void abilityToSort()
 	{
-		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> myfirstNode=new Node<>(56);
 		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mythirdNode=new Node<>(70);
 		Node<Integer> myfourthNode=new Node<>(40);
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
@@ -166,5 +166,33 @@ public class DataTest {
 		myLinkedList.add(mythirdNode);
 		myLinkedList.add(myfourthNode);
 		myLinkedList.printMyNode();
+	}
+	@Test
+	public void given3NumbersWhenAddedToStackShallHaveLastNode()
+	{
+		MyStack myStack=new MyStack();
+		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mysecondNode=new Node<>(30);
+		Node<Integer> mythirdNode=new Node<>(56);
+		myStack.push(myfirstNode);
+		myStack.push(mysecondNode);
+		myStack.push(mythirdNode);
+		INode newNode=myStack.peek();
+		myStack.printStack();
+		Assert.assertEquals(newNode, mythirdNode);
+	}
+	@Test
+	public void given3NumbersWhenPoppedShouldShowLastNumber()
+	{
+		MyStack myStack=new MyStack();
+		Node<Integer> myfirstNode=new Node<>(70);
+		Node<Integer> mysecondNode=new Node<>(30);
+		Node<Integer> mythirdNode=new Node<>(56);
+		myStack.push(myfirstNode);
+		myStack.push(mysecondNode);
+		myStack.push(mythirdNode);
+		INode newNode=myStack.pop();
+		myStack.printStack();
+		Assert.assertEquals(newNode, mythirdNode);
 	}
 }
