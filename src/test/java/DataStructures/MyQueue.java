@@ -14,5 +14,9 @@ public class MyQueue {
 
 		myLinkedList.printMyNode();
 	}
+	public LinkedList dequeue() {
+		myLinkedList.delete(myLinkedList.head.getKey());
+		return myLinkedList;
+	}
 
 }
