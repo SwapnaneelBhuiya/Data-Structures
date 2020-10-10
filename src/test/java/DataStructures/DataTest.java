@@ -103,4 +103,18 @@ public class DataTest {
 		myLinkedList.printMyNode();
 		Assert.assertEquals(mythirdNode, res);
 	}
+	@Test
+	public void abilityToSearchForNode30()
+	{
+		Node<Integer> mythirdNode=new Node<>(56);
+		Node<Integer> mysecondNode=new Node<>(30);
+		Node<Integer> myfirstNode=new Node<>(70);
+		myfirstNode.setNext(mysecondNode);
+		mysecondNode.setNext(mythirdNode);
+		LinkedList myLinkedList=new LinkedList();
+		myLinkedList.add(myfirstNode);
+		myLinkedList.add(mysecondNode);
+		myLinkedList.add(mythirdNode);
+		INode res=myLinkedList.search(30);
+	}
 }

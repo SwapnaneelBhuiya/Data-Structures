@@ -1,6 +1,6 @@
 package DataStructures;
 
-public class LinkedList {
+public class LinkedList<K> {
 	public INode head;
 	public INode tail;
 
@@ -63,6 +63,18 @@ public class LinkedList {
 			temp=temp.getNext();
 		this.tail=temp;
 		temp=temp.getNext();
+		return temp;
+	}
+	public INode search(K Key)
+	{
+		INode temp=head;
+		while(temp!=null&&temp.getNext()!=null)
+		{
+			if(temp.getKey()==Key)
+				break;
+			else
+				temp=temp.getNext();
+		}
 		return temp;
 	}
 }
