@@ -77,4 +77,26 @@ public class LinkedList<K> {
 		}
 		return temp;
 	}
+	public int length() {
+	       int length = 0;
+	       INode temp = this.head;  // Starts counting from head - first node
+	       while(temp != null){
+	           length ++;
+	           temp = temp.getNext();
+	       }
+	       return length;
+	    }
+	public void delete(K key)
+	{
+		INode temp=head;
+		while(temp!=null&&temp.getNext()!=null)
+		{
+			if(temp.getKey()==key)
+				{
+				temp.setNext(temp.getNext());
+				popLast();
+				break;
+				}
+		}
+	}
 }
