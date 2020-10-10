@@ -52,8 +52,8 @@ public class LinkedList {
 	}
 	public INode pop()
 	{
-		INode temp=(INode) this.head;
-		this.head=((INode) head).getNext();
+		INode temp= this.head;
+		this.head=head.getNext();
 		return temp;
 	}
 
