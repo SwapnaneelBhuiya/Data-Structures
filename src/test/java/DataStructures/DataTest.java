@@ -240,4 +240,33 @@ public class DataTest {
 		int freq=myHashMap.get("to");
 		Assert.assertEquals(2, freq);
 	}
+	@Test
+	public void givenASentenceWhenWordsAreAddedToListShouldReturnFrequency2()
+	{
+		String sentence ="Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+		MyLinkedHashMap<String,Integer> myHashMap=new MyLinkedHashMap<>();
+		String[] words=sentence.toLowerCase().split(" ");
+		for(String word: words)
+		{
+			Integer value=myHashMap.get(word);
+			if(value==null)
+				value=1;
+			else
+				value+=1;
+			myHashMap.add(word,value);
+		}
+		int freq=myHashMap.get("paranoid");
+		Assert.assertEquals(3, freq);
+	}
+	@Test
+	public void given3NumbersWhenAddedToBSTShouldReturnSize()
+	{
+		MyBinaryTree<Integer> myBinaryTree=new MyBinaryTree<>();
+		myBinaryTree.add(56);
+		myBinaryTree.add(30);
+		myBinaryTree.add(70);
+		int size=myBinaryTree.getSize();
+		System.out.println(myBinaryTree.search(myBinaryTree.getRoot(),30));
+		Assert.assertEquals(3, size);
+	}
 }

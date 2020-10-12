@@ -1,6 +1,6 @@
 package DataStructures;
 
-public class MyMapNode<K, V> {
+public class MyMapNode<K, V> implements INode<K>{
 	K key;
 	V value;
 	MyMapNode<K,V> next;
@@ -36,5 +36,10 @@ public class MyMapNode<K, V> {
 		if(next!=null)
 			st.append("->").append(next);
 		return st.toString();
+	}
+	@Override
+	public void setNext(INode<K> newnode) {
+		// TODO Auto-generated method stub
+		
 	}
 }
