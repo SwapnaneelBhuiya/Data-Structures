@@ -1,40 +1,42 @@
 package DataStructures;
 
 public class LinkedList<K> {
-	public INode head;
-	public INode tail;
+	public INode<K> head;
+	public INode<K> tail;
 
 	public LinkedList()
 	{
 		this.head=null;
 		this.tail=null;
 	}
-	public void add(INode newNode)
+	public void add(INode<K> newNode)
 	{
-		if(this.tail==null)
-			this.tail=newNode;
 		if(this.head==null)
 			this.head=newNode;
+		if(this.tail==null)
+			this.tail=newNode;
 		else {
-			INode tempNote=this.head;
+			sort(newNode);
+			INode<K> tempNote=this.head;
 			this.head=newNode;
 			(this.head).setNext(tempNote);
 		}
-		sort();
+		//sort();
 	}
 	public void printMyNode() {
 		StringBuffer myNodes=new StringBuffer("My Nodes:");
-		INode tempNode=(INode) head;
+		INode<K> tempNode=head;
 		while(tempNode.getNext()!=null)
 		{
 			myNodes.append(tempNode.getKey());
-			if(!tempNode.equals(tail)) myNodes.append("->");
+			
+			if(!tempNode.getNext().equals(null)) myNodes.append("->");
 			tempNode=tempNode.getNext();
 		}
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
 	}
-	public void append(INode newNode){
+	public void append(INode<K> newNode){
         if(this.head==null)
         	head=newNode;
         if(this.tail==null)
@@ -45,72 +47,98 @@ public class LinkedList<K> {
         	this.tail=newNode;
         }
     }
-	public void insert(INode mynode, INode newnode)
+	public void insert(INode<K> mynode, INode<K> newnode)
 	{
-		INode tempnode=mynode.getNext();
+		INode<K> tempnode=this.head;
+		while(!tempnode.getKey().equals(mynode.getKey()))
+			tempnode=tempnode.getNext();
+		newnode.setNext(tempnode.getNext());
 		mynode.setNext(newnode);
-		newnode.setNext(tempnode);
 	}
-	public INode pop()
+	public INode<K> pop()
 	{
-		INode temp= this.head;
+		INode<K> temp= this.head;
 		this.head=head.getNext();
 		return temp;
 	}
-	public INode popLast()
+	public INode<K> popLast()
 	{
-		INode temp=this.head;
-		while(!(temp.getNext().equals(tail)))
-			temp=temp.getNext();
-		this.tail=temp;
-		temp=temp.getNext();
-		return temp;
+		if(this.head==null)
+		return null;
+		else {
+            INode<K> tempNode = head;
+            while (!tempNode.getNext().equals(tail)) {
+                tempNode = tempNode.getNext();
+            }
+            INode<K> tempNode1 = tempNode.getNext();
+            tempNode.setNext(null);
+            return tempNode1;
+        }
 	}
-	public INode search(K Key)
+	public INode<K> search(INode<K> element)
 	{
-		INode temp=head;
-		while(temp!=null&&temp.getNext()!=null)
-		{
-			if(temp.getKey()==Key)
-				break;
-			else
-				temp=temp.getNext();
-		}
-		return temp;
+		if (this.head.equals(element))
+            return this.head;
+
+        INode<K> tempNode = head;
+        while (tempNode != null) {
+            tempNode = tempNode.getNext();
+            if (tempNode.equals(element))
+                return tempNode;
+        }
+        return null;		
 	}
 	public int length() {
 	       int length = 0;
-	       INode temp = this.head;  // Starts counting from head - first node
+	       INode<K> temp = this.head;  // Starts counting from head - first node
 	       while(temp != null){
 	           length ++;
 	           temp = temp.getNext();
 	       }
 	       return length;
 	    }
-	public void delete(K key)
+	public INode<K> search(K key) {
+      if (this.head.getKey().equals(key))
+          return this.head;
+
+      INode<K> tempNode = head;
+      while (tempNode != null) {
+          tempNode = tempNode.getNext();
+          if (tempNode.getKey().equals(key))
+              return tempNode;
+      }
+      return null;
+  }
+	public INode<K> delete(INode<?> element)
 	{
-		INode temp=head;
-		while(temp!=null&&temp.getNext()!=null)
-		{
-			if(temp.getKey()==key)
-				{
-				temp.setNext(temp.getNext());
-				popLast();
-				break;
-				}
-		}
+		if (head.equals(element)) {
+            INode<K> del = head;
+            head = head.getNext();
+            return del;
+        }
+        INode<K> deletedElement = head;
+        while (!deletedElement.getNext().equals(element)) {
+            deletedElement = deletedElement.getNext();
+        }
+        INode<K> tempNode = deletedElement.getNext();
+        deletedElement.setNext(deletedElement.getNext().getNext());
+        return tempNode;
 	}
-	public void sort()
+	public void sort(INode<K> newNode)
 	{
-		INode temp=this.head;
-		while(temp.getNext()!=null)
-		{
-			if(((StringBuffer) temp.getKey()).compareTo((StringBuffer) temp.getNext().getKey()) >0)
-			{
-				INode med=temp;
-				temp=temp.getNext();
-				temp.setNext(med);
-			}
-		}
+		INode<K> currentNode = this.head;
+        INode<K> prevNode = null;
+        while (currentNode != null && (int) newNode.getKey() > (int) currentNode.getKey()) {
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
+
+        }
+        if (prevNode == null) {
+            this.head = newNode;
+        } else {
+            prevNode.setNext(newNode);
+        }
+        newNode.setNext(currentNode);
+
 	}
 }

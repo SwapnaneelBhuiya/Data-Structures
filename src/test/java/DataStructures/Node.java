@@ -2,17 +2,16 @@ package DataStructures;
 
 public class Node<K> implements INode<K> {
 	private K key;
-	private Node next;
+	private Node<K> next;
 	public Node(K i)
 	{
-		this.key=null;
-		this.next=null;
+		this.key=i;
 	}
-	public INode getNext() {
+	public Node<K> getNext() {
 		return next;
 	}
-	public void setNext(INode myNode) {
-		next=(Node) myNode;
+	public void setNext(INode<K> myNode) {
+		next=(Node<K>) myNode;
 	}
 	public K getKey()
 	{

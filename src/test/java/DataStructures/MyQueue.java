@@ -15,7 +15,7 @@ public class MyQueue {
 		myLinkedList.printMyNode();
 	}
 	public LinkedList dequeue() {
-		myLinkedList.delete(myLinkedList.head.getKey());
+		INode del=myLinkedList.delete(myLinkedList.head);
 		return myLinkedList;
 	}
 
