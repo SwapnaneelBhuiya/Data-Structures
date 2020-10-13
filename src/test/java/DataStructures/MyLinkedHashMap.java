@@ -44,4 +44,21 @@ public class MyLinkedHashMap<K,V>{
 		else
 			myMapNode.setValue(value);
 	}
+	public boolean remove(K key)
+	{
+		int index=this.getBucketIndex(key);
+		LinkedList<K> myLinkedList=this.myBucketArray.get(index);
+		if(myLinkedList==null)
+		{
+			return false;
+		}
+		MyMapNode<K,V> myMapNode=(MyMapNode<K,V>)(myLinkedList.search(key));
+		if(myMapNode==null)
+			return false;
+		else
+		{
+			myLinkedList.delete((INode)key);
+			return true;
+		}
+	}
 }
