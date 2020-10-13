@@ -1,27 +1,27 @@
 package DataStructures;
 
-public class MyStack {
+public class MyStack<K> {
 
-	public LinkedList myLinkedList;
+	public LinkedList<K> myLinkedList;
 
 	public MyStack() {
 		this.myLinkedList=new LinkedList();
 	}
 
-	public void push(INode newNode) {
-		myLinkedList.add(newNode);
+	public void push(INode<K> newNode) {
+		myLinkedList.append(newNode);
 	}
 
 	public void printStack() {
 		myLinkedList.printMyNode();
 	}
 
-	public INode peek() {
+	public INode<K> peek() {
 		return myLinkedList.head;
 	}
 
-	public INode pop() {
-		return myLinkedList.pop();
+	public INode<K> pop() {
+		return myLinkedList.popLast();
 	}
 	
 }

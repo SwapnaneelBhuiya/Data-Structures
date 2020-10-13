@@ -1,22 +1,22 @@
 package DataStructures;
 
-public class MyQueue {
+public class MyQueue<K> {
 
-	public LinkedList myLinkedList;
+	public LinkedList<K> myLinkedList;
 	public MyQueue()
 	{
 		myLinkedList=new LinkedList();
 	}
-	public void enqueue(INode newNode) {
+	public void enqueue(INode<K> newNode) {
 		myLinkedList.append(newNode);
 	}
 	public void printQueue() {
 
 		myLinkedList.printMyNode();
 	}
-	public LinkedList dequeue() {
-		INode del=myLinkedList.delete(myLinkedList.head);
-		return myLinkedList;
+	public INode<K> dequeue() {
+		INode<K> del=myLinkedList.delete(myLinkedList.head);
+		return del;
 	}
 
 }

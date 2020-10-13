@@ -57,7 +57,7 @@ public class MyLinkedHashMap<K,V>{
 			return false;
 		else
 		{
-			myLinkedList.delete((INode)key);
+			myLinkedList.delete(key);
 			return true;
 		}
 	}

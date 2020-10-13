@@ -13,13 +13,13 @@ public class DataTest {
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(mythirdNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
 		//myLinkedList.printMyNode();
 		boolean result=myfirstNode.getNext().equals(mysecondNode)
 				&&mysecondNode.getNext().equals(mythirdNode);
-		Assert.assertEquals(false,result);
+		Assert.assertEquals(true,result);
 	}
 	@Test
 	public void given3numbersWhenAddedToLinkedListShouldBeAddedToTop()
@@ -30,9 +30,9 @@ public class DataTest {
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(mythirdNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(myfirstNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
 		boolean result=myfirstNode.getNext().equals(mysecondNode)
 				&&mysecondNode.getNext().equals(mythirdNode);
 		Assert.assertEquals(true,result);
@@ -46,7 +46,7 @@ public class DataTest {
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
+		myLinkedList.append(myfirstNode);
 		myLinkedList.append(mysecondNode);
 		myLinkedList.append(mythirdNode);
 		boolean result=myLinkedList.head.equals(myfirstNode)
@@ -112,9 +112,9 @@ public class DataTest {
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(mythirdNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
 		INode res=myLinkedList.search(30);
 	}
 	@Test
@@ -127,9 +127,9 @@ public class DataTest {
 		myfirstNode.setNext(mysecondNode);
 		mysecondNode.setNext(mythirdNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(mythirdNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
 		INode res=myLinkedList.search(30);
 		myLinkedList.insert(res, myfourthNode);
 	}
@@ -144,10 +144,10 @@ public class DataTest {
 		mysecondNode.setNext(mythirdNode);
 		mythirdNode.setNext(myfourthNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(mythirdNode);
-		myLinkedList.add(myfourthNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
+		myLinkedList.append(myfourthNode);
 		Assert.assertEquals(myLinkedList.delete(myfourthNode),myfourthNode);
 		//myLinkedList.printMyNode();
 	}
@@ -162,66 +162,13 @@ public class DataTest {
 		mysecondNode.setNext(mythirdNode);
 		mythirdNode.setNext(myfourthNode);
 		LinkedList<Integer> myLinkedList=new LinkedList<Integer>();
-		myLinkedList.add(myfirstNode);
-		myLinkedList.add(mysecondNode);
-		myLinkedList.add(mythirdNode);
-		myLinkedList.add(myfourthNode);
-		myLinkedList.sort(myfourthNode);
+		myLinkedList.append(myfirstNode);
+		myLinkedList.append(mysecondNode);
+		myLinkedList.append(mythirdNode);
+		myLinkedList.append(myfourthNode);
 		//myLinkedList.printMyNode();
 	}
-	@Test
-	public void given3NumbersWhenAddedToStackShallHaveLastNode()
-	{
-		MyStack myStack=new MyStack();
-		Node<Integer> myfirstNode=new Node<>(70);
-		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> mythirdNode=new Node<>(56);
-		myStack.push(myfirstNode);
-		myStack.push(mysecondNode);
-		myStack.push(mythirdNode);
-		INode newNode=myStack.peek();
-		myStack.printStack();
-		Assert.assertEquals(newNode, mythirdNode);
-	}
-	@Test
-	public void given3NumbersWhenPoppedShouldShowLastNumber()
-	{
-		MyStack myStack=new MyStack();
-		Node<Integer> myfirstNode=new Node<>(70);
-		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> mythirdNode=new Node<>(56);
-		myStack.push(myfirstNode);
-		myStack.push(mysecondNode);
-		myStack.push(mythirdNode);
-		INode newNode=myStack.pop();
-		myStack.printStack();
-		Assert.assertEquals(newNode, mythirdNode);
-	}
-	@Test
-	public void given3NumbersWhenAddedToQueue()
-	{
-		MyQueue myQueue=new MyQueue();
-		Node<Integer> myfirstNode=new Node<>(56);
-		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> mythirdNode=new Node<>(70);
-		myQueue.enqueue(myfirstNode);
-		myQueue.enqueue(mysecondNode);
-		myQueue.enqueue(mythirdNode);
-		myQueue.printQueue();
-	}
-	@Test
-	public void given3NumbersImplementDequeue()
-	{
-		MyQueue myQueue=new MyQueue();
-		Node<Integer> myfirstNode=new Node<>(56);
-		Node<Integer> mysecondNode=new Node<>(30);
-		Node<Integer> mythirdNode=new Node<>(70);
-		myQueue.enqueue(myfirstNode);
-		myQueue.enqueue(mysecondNode);
-		myQueue.enqueue(mythirdNode);
-		LinkedList temp=myQueue.dequeue();
-		temp.printMyNode();
-	}
+	
 	@Test
 	public void givenASentenceWhenWordsAreAddedToListShouldReturnFrequency()
 	{
@@ -259,14 +206,21 @@ public class DataTest {
 		Assert.assertEquals(3, freq);
 	}
 	@Test
-	public void given3NumbersWhenAddedToBSTShouldReturnSize()
+	public void givenASentenceWhenWordsAreRemoved()
 	{
-		MyBinaryTree<Integer> myBinaryTree=new MyBinaryTree<>();
-		myBinaryTree.add(56);
-		myBinaryTree.add(30);
-		myBinaryTree.add(70);
-		int size=myBinaryTree.getSize();
-		System.out.println(myBinaryTree.search(myBinaryTree.getRoot(),30));
-		Assert.assertEquals(3, size);
+		String sentence ="Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+		MyLinkedHashMap<String,Integer> myHashMap=new MyLinkedHashMap<>();
+		String[] words=sentence.toLowerCase().split(" ");
+		for(String word: words)
+		{
+			Integer value=myHashMap.get(word);
+			if(value==null)
+				value=1;
+			else
+				value+=1;
+			myHashMap.add(word,value);
+		}
+		Assert.assertTrue(myHashMap.remove("paranoid"));
 	}
+
 }

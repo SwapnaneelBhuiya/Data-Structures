@@ -77,14 +77,16 @@ public class LinkedList<K> {
 	}
 	public INode<K> search(INode<K> element)
 	{
+		if(this.head==null)
+			return null;
 		if (this.head.equals(element))
             return this.head;
 
         INode<K> tempNode = head;
         while (tempNode != null) {
-            tempNode = tempNode.getNext();
             if (tempNode.equals(element))
                 return tempNode;
+            tempNode = tempNode.getNext();
         }
         return null;		
 	}
@@ -98,18 +100,20 @@ public class LinkedList<K> {
 	       return length;
 	    }
 	public INode<K> search(K key) {
-      if (this.head.getKey().equals(key))
-          return this.head;
+		if(head==null)
+			return null;
+//      if (this.head.getKey().equals(key))
+//          return this.head;
 
       INode<K> tempNode = head;
       while (tempNode != null) {
-          tempNode = tempNode.getNext();
           if (tempNode.getKey().equals(key))
               return tempNode;
+          tempNode = tempNode.getNext();
       }
       return null;
   }
-	public INode<K> delete(INode<?> element)
+	public INode<K> delete(INode<K> element)
 	{
 		if (head.equals(element)) {
             INode<K> del = head;
@@ -122,6 +126,22 @@ public class LinkedList<K> {
         }
         INode<K> tempNode = deletedElement.getNext();
         deletedElement.setNext(deletedElement.getNext().getNext());
+        return tempNode;
+	}
+	public INode<K> delete(K element)
+	{
+		if(head==null)
+			return null;
+		if (head.equals(element)) {
+            INode<K> del = head;
+            head = head.getNext();
+            return del;
+        }
+        INode<K> deletedElement = head;
+        while (deletedElement.getNext()!=null&&!deletedElement.getNext().equals(element)) {
+            deletedElement = deletedElement.getNext();
+        }
+        INode<K> tempNode = deletedElement.getNext();
         return tempNode;
 	}
 	public void sort(INode<K> newNode)
